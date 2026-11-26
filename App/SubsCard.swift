@@ -49,7 +49,6 @@ struct SubscriptionBlock: View {
     @EnvironmentObject var state: AppState
     let sub: Subscription
     let editMode: EditMode
-    @State private var dragPing = false
 
     private var isOpen: Bool { state.opened.contains(sub.id) }
 

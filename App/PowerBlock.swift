@@ -64,8 +64,8 @@ struct PowerBlock: View {
 func flag(_ cc: String) -> String {
     guard cc.count == 2 else { return "" }
     return cc.uppercased().unicodeScalars.reduce(into: "") {
-        if let v = $1.value as UInt32?, UnicodeScalar(0x1F1E6 + v - 65) != nil {
-            $0.unicodeScalars.append(UnicodeScalar(0x1F1E6 + v - 65)!)
-        }
+        let v = $1.value
+        guard (65...90).contains(v), let scalar = UnicodeScalar(0x1F1E6 + v - 65) else { return }
+        $0.unicodeScalars.append(scalar)
     }
 }
